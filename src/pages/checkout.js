@@ -42,9 +42,7 @@ function Checkout() {
                     image={item.image}
                     hasPrime={item.hasPrime}
                   />
-                ))}
-
-                
+                ))}  
             </div>
         </div>
 

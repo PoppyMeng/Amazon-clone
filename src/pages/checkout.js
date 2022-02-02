@@ -4,12 +4,12 @@ import Image from "next/image";
 import { selectItems, selectTotal } from '../slices/basketSlice';
 import { useSelector } from "react-redux";
 import CheckOutProduct from '../components/CheckOutProduct';
-import CurrencyFormat from 'react-currency-format';
+import Currency from 'react-currency-format';
 import { useSession } from 'next-auth/react';
 
-function Checkout() {
+function Checkout ()  {
   const items = useSelector(selectItems);
-  const [session]=useSession();
+  const {data: session} =useSession();
   const total=useSelector(selectTotal);
 
   return (
@@ -31,7 +31,7 @@ function Checkout() {
                     
                 </h1>
                 
-                {items.map((item,i) => (
+                {items.map((item, i) => (
                   <CheckOutProduct 
                     key={i}
                     id={item.id}
@@ -50,11 +50,11 @@ function Checkout() {
         {/*right*/}
         <div className=" flex flex-col bg-white p-10 shadow-md">
           {items.length >0 && (
-            <div>
+            <>
               <h2 className="whitespace-nowrap">Subtotal ({items.length} items):
-              <span className="font-bold">
-                <CurrencyFormat quantity={total} currency="USD" />
-              </span>
+                <span className="font-bold">
+                  <Currency quantity={total} />
+                </span>
               </h2>
               <button 
               disabled= {!session}
@@ -65,7 +65,7 @@ function Checkout() {
               >
                 { !session ? "Sign in to check out" : "Proceed to checkout"}
               </button>
-            </div>
+            </>
           )}
         </div>
       </main>

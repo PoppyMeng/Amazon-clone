@@ -1,11 +1,11 @@
-import React from 'react';
+
 import Image from "next/image";
 import { StarIcon } from '@heroicons/react/outline';
-import CurrencyFormat from 'react-currency-format';
+import Currency from 'react-currency-format';
 import { useDispatch } from 'react-redux';
 import {addToBasket, removeFromBasket} from "../slices/basketSlice";
 
-function CheckOutProduct({
+function CheckOutProduct  ( {
      id, 
      title, 
      price, 
@@ -14,7 +14,8 @@ function CheckOutProduct({
      category, 
      image, 
      hasPrime,
-}) {
+    } ) 
+    {
     const dispatch = useDispatch();
 
     const addItemToBasket = () => {
@@ -34,7 +35,7 @@ function CheckOutProduct({
     }
     const removeItemFromBasket =() => {
         //remove item from redux
-        dispatch(removeItemFromBasket ( {id}));
+        dispatch(removeFromBasket ( {id}));
     }
     return (
         <div className="grid grid-cols-5">
@@ -45,14 +46,14 @@ function CheckOutProduct({
                     {Array (rating)
                         .fill()
                         .map((_,i)=> (
-                            <StarIcon key={i} className="h-5 text-yellow-500" />
+                            <StarIcon key={id} className="h-5 text-yellow-500" />
                         ))
                     }
                 </div>
                 <p className="text-xs mt-2 mb-2 line-clamp-3">
                     {description}
                 </p>
-                <CurrencyFormat quantity={price} currency="USD" />
+                <Currency quantity={price} />
                 {hasPrime && (
                     <div className="flex items-center space-x-2">
                         <img 

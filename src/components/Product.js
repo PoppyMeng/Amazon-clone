@@ -1,16 +1,17 @@
+import React from 'react';
 import Image from "next/image";
 import {useState} from "react";
 import {StarIcon} from "@heroicons/react/solid";
-// import Currency from "react-currency-format";
-import CurrencyFormat from 'react-currency-format';
+import Currency from 'react-currency-format';
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../slices/basketSlice";
 
 const MAX_RATING=5;
 const MIN_RATING=1;
 
-function Product( {id, title, price, description, category, image } ){
-    const dispatch = useDispatch();
+function Product ( {id, title, price, description, category, image } ) 
+ {
+    const dispatch = useDispatch ();
 
     const [rating] = useState(
         Math.floor(Math.random()*(MAX_RATING - MIN_RATING + 1))+ MIN_RATING
@@ -39,7 +40,7 @@ function Product( {id, title, price, description, category, image } ){
             <p className="text-xs my-2 line-clamp-2">{description}</p>
             
             <div className="mb-5">
-                <CurrencyFormat quantity={price} curency="USD"/>
+                <Currency quantity={price} curency="USD"/>
             </div>
 
             { hasPrime && (

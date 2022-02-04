@@ -13,8 +13,7 @@ function ProductFeed({ products } ){
                     description={description}
                     category={category}
                     image={image}
-                />
-                
+                /> 
             ))}
 
             <img 
@@ -44,11 +43,11 @@ function ProductFeed({ products } ){
                     price={price}
                     description={description}
                     category={category}
-                    image={image}
+                    image={image} 
                 />
-                
             ))}
         </div>
     );
 }
- export default ProductFeed;
+
+export default ProductFeed;
